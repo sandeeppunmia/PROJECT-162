@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Game in Virtual Reality</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+    <script src="./js/throw.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene">
+     <a-sky color="grey"></a-sky>
+      <!--Assets-->
+      <a-assets>        
+        <a-asset-item id="bowling_pin" src="./models/bowling_pin/scene.gltf"></a-asset-item>
+        <a-asset-item id="hand_model" src="./models/hand/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <!--Camera and Cursor-->
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        wasd-controls
+        look-controls="pointerLockEnabled: false"        
+      >
+        <a-entity
+            id="hand"
+            gltf-model="#hand_model"
+            position="0 -4.4 3"
+            rotation="0 90 90"
+            scale="0.35 1 1"          
+          >
+        </a-entity>
+        <a-cursor></a-cursor>        
+      </a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 0"
+        rotation="-90 0 0"
+        height="200"
+        width="200"
+        color="#FBF2D4"
+        static-body
+        visible="true"
+      >
+      </a-plane>
+
+      <!--Bowling Alley-->
+      <a-box id="left_pillar" position="-12 1.5 -10" depth="1" height="10" width="3" color="black" static-body></a-box>
+      <a-box id="right_pillar" position="12 1.5 -10" depth="1" height="10" width="3" color="black" static-body></a-box>
+      <a-box id="ceiling" position="0 8 -10" depth="1" height="3" width="30" color="black" static-body></a-box>
+
+      <!--Balls-->
+      <a-entity throw></a-entity>
+
+      <!--Bowling Pins-->
+      <a-box id="pin_1" position="0 2 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_2" position="-1 2.3 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_3" position="1 2.3 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_4" position="-2 2.6 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_5" position="2 2.6 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_6" position="-3 2.9 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_7" position="3 2.9 -10" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_8" position="0.5 3.5 -14" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+      <a-box id="pin_9" position="-0.5 3.5 -14" depth="1" height="2" width="1" gltf-model="#bowling_pin" scale="7 7 7" dynamic-body></a-box>
+
+    </a-scene>
+  </body>
+</html>
